@@ -1,0 +1,199 @@
+# Counter-Strike Skins Trade
+
+Project Created to Manage Sale and Purchase of Skins
+
+## TO:DO
+
+- [ ] CRUD
+    - [ ] Account
+        - [ ] Table Fields
+            - [ ] id
+            - [ ] name
+                - Required
+                - Max characters 80
+            - [ ] url
+                - Required
+                - Max characters 255
+        - [ ] Register Screen
+        - [ ] Update Screen
+        - [ ] List Screen
+    - [ ] Site
+        - [ ] Table Fields
+            - [ ] id
+            - [ ] logo
+                - Not Required
+            - [ ] title
+                - Required
+                - Max characters 80
+            - [ ] url
+                - Required
+                - Max characters 255
+            - [ ] sales_commission_percent
+                - Required
+                - Float
+                - Precision 2
+            - [ ] fee_withdraw_percent
+                - Required
+                - Float
+                - Precision 2
+            - [ ] opening_balance
+                - Required
+                - Float
+                - Precision 2
+            - [ ] balance
+                - Required
+                - Float
+                - Precision 2
+            - [ ] account_id
+        - [ ] Register Screen
+        - [ ] Update Screen
+        - [ ] List Screen
+    - [ ] purchase_and_sales
+        - [ ] Table Fields
+            - [ ] id
+            - [ ] item_image
+                - Not Required
+            - [ ] item_name
+                - Required
+                - Max characters 255
+            - [ ] item_exterior
+                - Not Required
+                - Options
+                    - FN - Factory New
+                    - MW - Minimal Wear
+                    - FT - Field-Tested
+                    - WW - Well-Worn
+                    - BS - Battle-Scarred
+            - [ ] item_rarity
+                - Not Required
+                - Options
+                    - CG - Consumer Grade
+                    - IG - Industrial Grade
+                    - MSG - Mil-Spec Grade
+                    - RE - Restricted
+                    - CL - Classified
+                    - CO - Covert
+                    - UN - Undefined
+            - [ ] item_type
+                - Not Required
+                - Max characters 255
+            - [ ] item_float
+                - Not Required 
+                - Float
+                - Precision 2
+            - [ ] item_is_stattrak
+                - Required
+                - Defaul Value - false
+            - [ ] item_has_sticker
+                - Required
+                - Defaul Value - false
+            - [ ] item_is_souvenir
+                - Required
+                - Defaul Value - false
+            - [ ] item_price_on_steam
+                - Required
+                - Float
+                - Precision 2
+            - [ ] purchase_price
+                - Required
+                - Float
+                - Precision 2
+            - [ ] percent_discount_on_purchase
+                - Required
+                - Float
+                - Precision 2
+            - [ ] sale_value
+                - Required
+                - Float
+                - Precision 2
+            - [ ] percent_discount_on_sale
+                - Required
+                - Float
+                - Precision 2
+            - [ ] sales_commission_percent
+                - Required
+                - Float
+                - Precision 2
+            - [ ] fee_withdraw_percent
+                - Required
+                - Float
+                - Precision 2
+            - [ ] balance_deducting_sales_commission
+                - Required
+                - Float
+                - Precision 2
+            - [ ] final_balance
+                - Required
+                - Float
+                - Precision 2
+            - [ ] status
+                - Required
+                - Options
+                    - purchase
+                    - sold
+                    - steam_inventory
+                    - site_inventory
+                    - for_sale
+            - [ ] site_id
+                - Required
+        - [ ] Register Screen
+        - [ ] Update Screen
+        - [ ] List Screen
+        - [ ] Rules
+            - [ ] Before Insert - Get Value **sales_commission_percent** and **fee_withdraw_percent** by **site** and set on insert.
+            - [ ] Before Insert - Automatically calculate **balance_deducting_sales_commission** and **final_balance** based on **sales_commission_percent** and **fee_withdraw_percent**
+            - [ ] After Insert - Insert New Data in **transaction_history**
+            - [ ] After Update - Insert New Data in **transaction_history**
+            - [ ] After Update - If the status is equal to **for_sale**, it updates the **site** **balance**
+    - [ ] transaction_history
+        - [ ] Table Fields
+            - [ ] id
+            - [ ] purchase_and_sales_id
+                - Required
+            - [ ] item_price_on_steam
+                - Required
+                - Float
+                - Precision 2
+            - [ ] purchase_price
+                - Required
+                - Float
+                - Precision 2
+            - [ ] percent_discount_on_purchase
+                - Required
+                - Float
+                - Precision 2
+            - [ ] sale_value
+                - Required
+                - Float
+                - Precision 2
+            - [ ] percent_discount_on_sale
+                - Required
+                - Float
+                - Precision 2
+            - [ ] sales_commission_percent
+                - Required
+                - Float
+                - Precision 2
+            - [ ] fee_withdraw_percent
+                - Required
+                - Float
+                - Precision 2
+            - [ ] balance_deducting_sales_commission
+                - Required
+                - Float
+                - Precision 2
+            - [ ] final_balance
+                - Required
+                - Float
+                - Precision 2
+            - [ ] status
+                - Required
+                - Options
+                    - purchase
+                    - sold
+                    - steam_inventory
+                    - site_inventory
+                    - for_sale
+        - [ ] Register Screen
+        - [ ] Update Screen
+        - [ ] List Screen

@@ -1,0 +1,11 @@
+# Modulos
+/node_modules
+/dist
+
+# Arquivos
+package-lock.json
+.env
+.vscode
+.DS_STORE
+*.txt
+*.pdf
