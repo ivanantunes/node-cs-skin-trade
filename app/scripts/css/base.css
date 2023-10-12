@@ -8,6 +8,19 @@ body {
     background-color: #fafafa;
 }
 
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
 /* ! Boostrap */
 
 textarea:focus,

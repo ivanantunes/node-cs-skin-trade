@@ -1,7 +1,5 @@
-const isSession = localStorage.getItem('session');
-
-if (isSession) {
+if (isAuthenticated()) {
     location.href = '/home';
-} else {
-    location.href = '/login'
 }
+
+location.href = '/login';

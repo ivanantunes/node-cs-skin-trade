@@ -11,42 +11,52 @@
     <!-- ? Styles -->
     <link href="/web/libs/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/web/libs/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/web/libs/css/sweetalert2.min.css" rel="stylesheet" />
     <!-- ? Scripts -->
     <script src="/web/libs/js/bootstrap.min.js"></script>
     <script src="/web/libs/js/jquery-3.7.1.min.js"></script>
+    <script src="/web/libs/js/sweetalert2.min.js"></script>
     <!-- ! Local -->
     <!-- ? Styles -->
-    <link href="/login/index.css" rel="stylesheet" />
     <link href="/web/scripts/css/colors.css" rel="stylesheet" />
     <link href="/web/scripts/css/fonts.css" rel="stylesheet" />
     <link href="/web/scripts/css/base.css" rel="stylesheet" />
+    <link href="/login/index.css" rel="stylesheet" />
     <!-- ? Scripts -->
+    <script src="/web/scripts/js/session.js"></script>
     <script src="/login/index.js"></script>
 </head>
 
 <body>
-
     <div class="container vh-100">
         <div class="row vh-100 justify-content-center align-items-center">
             <div class="col-sm-6 col-md-8 col-lg-5 shadow p-3 mb-5 bg-body rounded">
+
+                <div class="loading" id="loading">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
 
                 <img id="userImage">
                 <h2 id="userWelcome">Welcome</h2>
                 <p id="userInfo">Sing in by entering the information below</p>
 
-                <form>
+                <form class="needs-validation" novalidate>
                     <div class="input-group mb-3">
                         <span class="input-group-text container-input-icon"><i class="bi bi-envelope-fill"></i></span>
                         <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Email Address" required>
+                        <div class="invalid-feedback"><strong>E-mail Address</strong> is Required</div>
                     </div>
         
                     <div class="input-group mb-3">
                         <span class="input-group-text container-input-icon"><i class="bi bi-key-fill"></i></span>
                         <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" required>
+                        <div class="invalid-feedback"><strong>Password</strong> is Required</div>
                     </div>
         
                     <div class="row justify-content-center">
-                        <button type="submit" class="btn container-form-button-login">Sing In</button>
+                        <button type="submit" class="btn container-form-button-login" (onclick)="onSubmit()">Sing In</button>
                     </div>
                 </form>
             </div>
