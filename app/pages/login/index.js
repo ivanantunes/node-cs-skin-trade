@@ -1,10 +1,8 @@
+if (isAuthenticated()) {
+    location.href = '/home';
+}
+
 $(document).ready(() => {
-
-    if (isAuthenticated()) {
-        location.href = '/home';
-        return;
-    }
-
     const loading = document.getElementById('loading');
 
     $('#userImage').attr('src', `/web/assets/images/agents/${Math.floor(Math.random() * 5) + 1}.png`);
