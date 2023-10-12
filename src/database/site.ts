@@ -1,3 +1,4 @@
+import { Sequelize } from 'sequelize';
 import { zEFieldTypeDB, zITableDB } from 'zmodule-api';
 
 export const site: zITableDB = {
@@ -69,6 +70,20 @@ export const site: zITableDB = {
                 tableName: 'account',
                 fieldName: 'id',
             }
+        },
+        {
+            fieldName: 'datetime_create',
+            fieldPrimaryKey: false,
+            fieldRequired: true,
+            fieldType: zEFieldTypeDB.VARCHAR,
+            fieldDefaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        {
+            fieldName: 'datetime_update',
+            fieldPrimaryKey: false,
+            fieldRequired: true,
+            fieldType: zEFieldTypeDB.VARCHAR,
+            fieldDefaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
     ]
 };

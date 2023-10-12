@@ -1,4 +1,5 @@
 import { zEFieldTypeDB, zITableDB } from 'zmodule-api';
+import { Sequelize } from 'sequelize';
 
 export const purchase_and_sales: zITableDB = {
     tableName: 'purchase_and_sales',
@@ -145,6 +146,13 @@ export const purchase_and_sales: zITableDB = {
             fieldPrecision: 2,
         },
         {
+            fieldName: 'profit',
+            fieldPrimaryKey: false,
+            fieldRequired: true,
+            fieldType: zEFieldTypeDB.FLOAT,
+            fieldPrecision: 2,
+        },
+        {
             fieldName: 'status',
             fieldPrimaryKey: false,
             fieldRequired: true,
@@ -160,6 +168,20 @@ export const purchase_and_sales: zITableDB = {
                 tableName: 'site',
                 fieldName: 'id',
             }
+        },
+        {
+            fieldName: 'datetime_create',
+            fieldPrimaryKey: false,
+            fieldRequired: true,
+            fieldType: zEFieldTypeDB.VARCHAR,
+            fieldDefaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        {
+            fieldName: 'datetime_update',
+            fieldPrimaryKey: false,
+            fieldRequired: true,
+            fieldType: zEFieldTypeDB.VARCHAR,
+            fieldDefaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
     ]
 };

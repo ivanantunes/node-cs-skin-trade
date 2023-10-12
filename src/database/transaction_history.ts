@@ -1,3 +1,4 @@
+import { Sequelize } from 'sequelize';
 import { zEFieldTypeDB, zITableDB } from 'zmodule-api';
 
 export const transaction_history: zITableDB = {
@@ -84,11 +85,25 @@ export const transaction_history: zITableDB = {
             fieldPrecision: 2,
         },
         {
+            fieldName: 'profit',
+            fieldPrimaryKey: false,
+            fieldRequired: true,
+            fieldType: zEFieldTypeDB.FLOAT,
+            fieldPrecision: 2,
+        },
+        {
             fieldName: 'status',
             fieldPrimaryKey: false,
             fieldRequired: true,
             fieldType: zEFieldTypeDB.ENUM,
             fieldEnumValue: ['purchase', 'sold', 'steam_inventory', 'site_inventory', 'for_sale']
+        },
+        {
+            fieldName: 'datetime',
+            fieldPrimaryKey: false,
+            fieldRequired: true,
+            fieldType: zEFieldTypeDB.VARCHAR,
+            fieldDefaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         },
     ]
 };

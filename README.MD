@@ -14,6 +14,10 @@ Project Created to Manage Sale and Purchase of Skins
             - [ ] url
                 - Required
                 - Max characters 255
+            - [ ] datetime_create
+                - Required
+            - [ ] datetime_update
+                - Required
         - [ ] Register Screen
         - [ ] Update Screen
         - [ ] List Screen
@@ -45,6 +49,10 @@ Project Created to Manage Sale and Purchase of Skins
                 - Float
                 - Precision 2
             - [ ] account_id
+            - [ ] datetime_create
+                - Required
+            - [ ] datetime_update
+                - Required
         - [ ] Register Screen
         - [ ] Update Screen
         - [ ] List Screen
@@ -126,6 +134,10 @@ Project Created to Manage Sale and Purchase of Skins
                 - Required
                 - Float
                 - Precision 2
+            - [ ] profit
+                - Required
+                - Float
+                - Precision 2
             - [ ] status
                 - Required
                 - Options
@@ -135,6 +147,10 @@ Project Created to Manage Sale and Purchase of Skins
                     - site_inventory
                     - for_sale
             - [ ] site_id
+                - Required
+            - [ ] datetime_create
+                - Required
+            - [ ] datetime_update
                 - Required
         - [ ] Register Screen
         - [ ] Update Screen
@@ -186,6 +202,10 @@ Project Created to Manage Sale and Purchase of Skins
                 - Required
                 - Float
                 - Precision 2
+            - [ ] profit
+                - Required
+                - Float
+                - Precision 2
             - [ ] status
                 - Required
                 - Options
@@ -194,6 +214,8 @@ Project Created to Manage Sale and Purchase of Skins
                     - steam_inventory
                     - site_inventory
                     - for_sale
+            - [ ] datetime
+                - Required
         - [ ] Register Screen
         - [ ] Update Screen
         - [ ] List Screen
