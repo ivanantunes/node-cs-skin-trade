@@ -6,17 +6,17 @@ Project Created to Manage Sale and Purchase of Skins
 
 - [ ] CRUD
     - [ ] Account
-        - [ ] Table Fields
-            - [ ] id
-            - [ ] name
+        - [X] Table Fields
+            - [X] id
+            - [X] name
                 - Required
                 - Max characters 80
-            - [ ] url
+            - [X] url
                 - Required
                 - Max characters 255
-            - [ ] datetime_create
+            - [X] datetime_create
                 - Required
-            - [ ] datetime_update
+            - [X] datetime_update
                 - Required
         - [ ] Register Screen
         - [ ] Update Screen
