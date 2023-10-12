@@ -22,49 +22,49 @@ Project Created to Manage Sale and Purchase of Skins
         - [ ] Update Screen
         - [ ] List Screen
     - [ ] Site
-        - [ ] Table Fields
-            - [ ] id
-            - [ ] logo
+        - [X] Table Fields
+            - [X] id
+            - [X] logo
                 - Not Required
-            - [ ] title
+            - [X] title
                 - Required
                 - Max characters 80
-            - [ ] url
+            - [X] url
                 - Required
                 - Max characters 255
-            - [ ] sales_commission_percent
+            - [X] sales_commission_percent
                 - Required
                 - Float
                 - Precision 2
-            - [ ] fee_withdraw_percent
+            - [X] fee_withdraw_percent
                 - Required
                 - Float
                 - Precision 2
-            - [ ] opening_balance
+            - [X] opening_balance
                 - Required
                 - Float
                 - Precision 2
-            - [ ] balance
+            - [X] balance
                 - Required
                 - Float
                 - Precision 2
-            - [ ] account_id
-            - [ ] datetime_create
+            - [X] account_id
+            - [X] datetime_create
                 - Required
-            - [ ] datetime_update
+            - [X] datetime_update
                 - Required
         - [ ] Register Screen
         - [ ] Update Screen
         - [ ] List Screen
     - [ ] purchase_and_sales
-        - [ ] Table Fields
-            - [ ] id
-            - [ ] item_image
+        - [X] Table Fields
+            - [X] id
+            - [X] item_image
                 - Not Required
-            - [ ] item_name
+            - [X] item_name
                 - Required
                 - Max characters 255
-            - [ ] item_exterior
+            - [X] item_exterior
                 - Not Required
                 - Options
                     - FN - Factory New
@@ -72,7 +72,7 @@ Project Created to Manage Sale and Purchase of Skins
                     - FT - Field-Tested
                     - WW - Well-Worn
                     - BS - Battle-Scarred
-            - [ ] item_rarity
+            - [X] item_rarity
                 - Not Required
                 - Options
                     - CG - Consumer Grade
@@ -82,63 +82,63 @@ Project Created to Manage Sale and Purchase of Skins
                     - CL - Classified
                     - CO - Covert
                     - UN - Undefined
-            - [ ] item_type
+            - [X] item_type
                 - Not Required
                 - Max characters 255
-            - [ ] item_float
+            - [X] item_float
                 - Not Required 
                 - Float
                 - Precision 2
-            - [ ] item_is_stattrak
+            - [X] item_is_stattrak
                 - Required
                 - Defaul Value - false
-            - [ ] item_has_sticker
+            - [X] item_has_sticker
                 - Required
                 - Defaul Value - false
-            - [ ] item_is_souvenir
+            - [X] item_is_souvenir
                 - Required
                 - Defaul Value - false
-            - [ ] item_price_on_steam
+            - [X] item_price_on_steam
                 - Required
                 - Float
                 - Precision 2
-            - [ ] purchase_price
+            - [X] purchase_price
                 - Required
                 - Float
                 - Precision 2
-            - [ ] percent_discount_on_purchase
+            - [X] percent_discount_on_purchase
                 - Required
                 - Float
                 - Precision 2
-            - [ ] sale_value
+            - [X] sale_value
                 - Required
                 - Float
                 - Precision 2
-            - [ ] percent_discount_on_sale
+            - [X] percent_discount_on_sale
                 - Required
                 - Float
                 - Precision 2
-            - [ ] sales_commission_percent
+            - [X] sales_commission_percent
                 - Required
                 - Float
                 - Precision 2
-            - [ ] fee_withdraw_percent
+            - [X] fee_withdraw_percent
                 - Required
                 - Float
                 - Precision 2
-            - [ ] balance_deducting_sales_commission
+            - [X] balance_deducting_sales_commission
                 - Required
                 - Float
                 - Precision 2
-            - [ ] final_balance
+            - [X] final_balance
                 - Required
                 - Float
                 - Precision 2
-            - [ ] profit
+            - [X] profit
                 - Required
                 - Float
                 - Precision 2
-            - [ ] status
+            - [X] status
                 - Required
                 - Options
                     - purchase
@@ -146,11 +146,11 @@ Project Created to Manage Sale and Purchase of Skins
                     - steam_inventory
                     - site_inventory
                     - for_sale
-            - [ ] site_id
+            - [X] site_id
                 - Required
-            - [ ] datetime_create
+            - [X] datetime_create
                 - Required
-            - [ ] datetime_update
+            - [X] datetime_update
                 - Required
         - [ ] Register Screen
         - [ ] Update Screen
@@ -162,51 +162,51 @@ Project Created to Manage Sale and Purchase of Skins
             - [ ] After Update - Insert New Data in **transaction_history**
             - [ ] After Update - If the status is equal to **for_sale**, it updates the **site** **balance**
     - [ ] transaction_history
-        - [ ] Table Fields
-            - [ ] id
-            - [ ] purchase_and_sales_id
+        - [X] Table Fields
+            - [X] id
+            - [X] purchase_and_sales_id
                 - Required
-            - [ ] item_price_on_steam
-                - Required
-                - Float
-                - Precision 2
-            - [ ] purchase_price
+            - [X] item_price_on_steam
                 - Required
                 - Float
                 - Precision 2
-            - [ ] percent_discount_on_purchase
+            - [X] purchase_price
                 - Required
                 - Float
                 - Precision 2
-            - [ ] sale_value
+            - [X] percent_discount_on_purchase
                 - Required
                 - Float
                 - Precision 2
-            - [ ] percent_discount_on_sale
+            - [X] sale_value
                 - Required
                 - Float
                 - Precision 2
-            - [ ] sales_commission_percent
+            - [X] percent_discount_on_sale
                 - Required
                 - Float
                 - Precision 2
-            - [ ] fee_withdraw_percent
+            - [X] sales_commission_percent
                 - Required
                 - Float
                 - Precision 2
-            - [ ] balance_deducting_sales_commission
+            - [X] fee_withdraw_percent
                 - Required
                 - Float
                 - Precision 2
-            - [ ] final_balance
+            - [X] balance_deducting_sales_commission
                 - Required
                 - Float
                 - Precision 2
-            - [ ] profit
+            - [X] final_balance
                 - Required
                 - Float
                 - Precision 2
-            - [ ] status
+            - [X] profit
+                - Required
+                - Float
+                - Precision 2
+            - [X] status
                 - Required
                 - Options
                     - purchase
@@ -214,7 +214,7 @@ Project Created to Manage Sale and Purchase of Skins
                     - steam_inventory
                     - site_inventory
                     - for_sale
-            - [ ] datetime
+            - [X] datetime
                 - Required
         - [ ] Register Screen
         - [ ] Update Screen
