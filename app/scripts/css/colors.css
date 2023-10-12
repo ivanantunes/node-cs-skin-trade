@@ -1,0 +1,9 @@
+:root {
+    --primary: #FFA421;
+    --secondary: #EF8249;
+    --buttonPrimary: #976BAE;
+    --buttonSecondary: #797CC6;
+    --white: #ffffff;
+    --black: rgba(0, 0, 0, 0.7);
+    --warn: #C4677B;
+}
