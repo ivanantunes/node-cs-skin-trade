@@ -40,9 +40,14 @@
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
+    color: var(--white);
 }
 
 #userInfo {
     text-align: center;
-    color: #cacaca;
+    color: rgba(240, 240, 240, 0.8);
+}
+
+#containerLogin {
+    background-color: var(--buttonPrimary) !important;
 }

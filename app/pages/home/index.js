@@ -11,33 +11,38 @@ $(document).ready(() => {
     $('#profileName').html(session.username);
     $('#profileEmail').html(session.email);
 
-    $(".sidebar-dropdown > a").click(function () {
-        $(".sidebar-submenu").slideUp(200);
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map((tooltipTriggerEl) => {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+
+    $('.sidebar-dropdown > a').click(() => {
+        $('.sidebar-submenu').slideUp(200);
         if (
             $(this)
             .parent()
-            .hasClass("active")
+            .hasClass('active')
         ) {
-            $(".sidebar-dropdown").removeClass("active");
+            $('.sidebar-dropdown').removeClass('active');
             $(this)
                 .parent()
-                .removeClass("active");
+                .removeClass('active');
         } else {
-            $(".sidebar-dropdown").removeClass("active");
+            $('.sidebar-dropdown').removeClass('active');
             $(this)
-                .next(".sidebar-submenu")
+                .next('.sidebar-submenu')
                 .slideDown(200);
             $(this)
                 .parent()
-                .addClass("active");
+                .addClass('active');
         }
     });
     
-    $("#close-sidebar").click(function () {
-        $(".page-wrapper").removeClass("toggled");
+    $('#close-sidebar').click(function () {
+        $('.page-wrapper').removeClass('toggled');
     });
-    $("#show-sidebar").click(function () {
-        $(".page-wrapper").addClass("toggled");
+    $('#show-sidebar').click(function () {
+        $('.page-wrapper').addClass('toggled');
     });
 });
 
@@ -47,4 +52,9 @@ $(document).ready(() => {
  */
 function changeScreen(url) {
     $('#screen').load(url, () => { });
+}
+
+function logout() {
+    onEndSession();
+    location.href = '/login';
 }

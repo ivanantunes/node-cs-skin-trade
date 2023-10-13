@@ -187,8 +187,8 @@ body {
     width: 100px;
     margin: auto;
     padding: 2px;
-    border-radius: 12px;
-    overflow: hidden;
+    /* border-radius: 12px;
+    overflow: hidden; */
 }
 
 .sidebar-wrapper .sidebar-header .user-pic img {
@@ -440,13 +440,13 @@ body {
 /*-----------------------------chiller-theme-------------------------------------------------*/
 
 .chiller-theme .sidebar-wrapper {
-    background: var(--secondary);
+    background: var(--buttonPrimary);
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-header,
 .chiller-theme .sidebar-wrapper .sidebar-search,
 .chiller-theme .sidebar-wrapper .sidebar-menu {
-    border-top: 1px solid var(--primary);
+    border-top: 1px solid var(--secondary);
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
@@ -493,7 +493,7 @@ body {
 .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div,
 .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
 .chiller-theme .sidebar-wrapper .sidebar-search .input-group-text {
-    background: var(--secondary);
+    background: var(--buttonPrimary);
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-menu .header-menu span {
@@ -501,9 +501,9 @@ body {
 }
 
 .chiller-theme .sidebar-footer {
-    background: var(--secondary);
-    box-shadow: 0px -1px 5px var(--primary);
-    border-top: 1px solid var(--primary);
+    background: var(--buttonPrimary);
+    /* box-shadow: 0px -1px 5px var(--secondary); */
+    border-top: 1px solid var(--secondary);
 }
 
 .chiller-theme .sidebar-footer>a:first-child {
@@ -522,4 +522,15 @@ body {
     display: block;
     padding-top: 5%;
     border-top: 1px solid var(--secondary);
+}
+
+#profilePhoto {
+    border-radius: 50%;
+    border: 1px solid var(--secondary);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+#show-sidebar {
+    background-color: var(--buttonPrimary);
+    color: var(--white);
 }
