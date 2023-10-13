@@ -20,3 +20,17 @@ function onStartSession(session) {
 function onEndSession() {
     localStorage.removeItem('session');
 }
+
+/**
+ * Get a Session
+ * @returns {{ photo?: string, username: string, email: string, token: string } | null} 
+ */
+function onGetSession() {
+    let session = localStorage.getItem('session');
+
+    if (session) {
+        session = JSON.parse(session);
+    }
+
+    return session;
+}

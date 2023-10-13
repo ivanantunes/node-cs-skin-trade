@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,88 @@
     <script src="/web/scripts/js/session.js"></script>
     <script src="/home/index.js"></script>
 </head>
+
 <body>
 
+    <div class="loading" id="loading">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div class="page-wrapper chiller-theme toggled" id="container-menu">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+            <i class="bi bi-list"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div class="sidebar-brand">
+                    <a href="/home/">Main Menu</a>
+                    <div id="close-sidebar">
+                        <i class="bi bi-x"></i>
+                    </div>
+                </div>
+                <div class="sidebar-header">
+                    <!-- PERFIL FOTO -->
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" id="profilePhoto">
+                    </div>
+                    <!-- PERFIL INFO -->
+                    <div class="user-info">
+                        <span class="user-name"><strong id="profileName"></strong></span>
+                        <span class="user-role" id="profileEmail"></span>
+                    </div>
+                </div>
+                <!-- MENU -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu"><span>Constrols</span></li>
+                        <li>
+                            <a onclick="changeScreen('/dashboard/')">
+                                <i class="bi bi-speedometer2"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="header-menu"><span>Registers</span></li>
+                        <li>
+                            <a onclick="changeScreen('/account/')">
+                                <i class="bi bi-person-circle"></i>
+                                <span>Account</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="changeScreen('/site/')">
+                                <i class="bi bi-globe-americas"></i>
+                                <span>Site</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="changeScreen('/purchases_and_sales/')">
+                                <i class="bi bi-currency-exchange"></i>
+                                <span>Purchases and Sales</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- FOOTER MENU  -->
+            <div class="sidebar-footer">
+                <a href="mailto:ivanantnes75@gmail.com">
+                    <i class="bi bi-envelope-at-fill"></i>
+                </a>
+                <a>
+                    <i class="bi bi-door-closed-fill"></i>
+                </a>
+            </div>
+        </nav>
+        <!-- COMPONENTE -->
+        <main class="page-content">
+            <div class="container-fluid">
+                <div id="screen"></div>
+            </div>
+        </main>
+    </div>
+
 </body>
+
 </html>
