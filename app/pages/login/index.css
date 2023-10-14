@@ -1,12 +1,3 @@
-.container-input-icon {
-    background-color: var(--primary);
-    border: none;
-}
-
-.container-input-icon > i {
-    color: var(--black)
-}
-
 .container-form-button-login {
     background-color: var(--primary);
     color: var(--black);

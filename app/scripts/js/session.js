@@ -34,3 +34,11 @@ function onGetSession() {
 
     return session;
 }
+
+/**
+ * Logout of System
+ */
+function logout() {
+    onEndSession();
+    location.href = '/login';
+}

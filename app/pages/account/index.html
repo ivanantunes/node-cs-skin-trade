@@ -2,13 +2,70 @@
 <script src="/account/index.js"></script>
 
 
+<!-- Form Add -->
+<div class="modal fade" id="formAddModal" tabindex="-1" aria-labelledby="formAddModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content background-default">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formAddModalLabel">Register <strong>Account</strong></h5>
+            </div>
+            <div class="modal-body">
+                <form id="formAdd" class="needs-validation" novalidate>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-person-circle"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Name" required>
+                        <div class="invalid-feedback"><strong>Name</strong> is Required</div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-link-45deg"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="url" name="url" placeholder="Url (Steam)" required>
+                        <div class="invalid-feedback"><strong>Url</strong> is Required</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-save-modal">Register</button>
+                    <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Form Edit -->
+<div class="modal fade" id="formEditModal" tabindex="-1" aria-labelledby="formEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content background-default">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formEditModalLabel">Edit <strong>Account</strong></h5>
+            </div>
+            <div class="modal-body">
+                <form id="formEdit" class="needs-validation" novalidate>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-person-circle"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="nameEdit" name="name" placeholder="Name" required>
+                        <div class="invalid-feedback"><strong>Name</strong> is Required</div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-link-45deg"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="urlEdit" name="url" placeholder="Url (Steam)" required>
+                        <div class="invalid-feedback"><strong>Url</strong> is Required</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-save-modal">Save Changes</button>
+                    <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row">
-        <div class="shadow p-3 mb-5 bg-body rounded" id="containerTable">
-            <div>
+        <div class="shadow p-3 mb-5 bg-body rounded container-datatable">
+            <div class="container-title-button">
                 <h2>Account</h2>
-                <button class="btn btn-success">
+                <button type="button" class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#formAddModal">
                     <i class="bi bi-plus-lg"></i>
+                    New
                 </button>
             </div>
 
@@ -27,5 +84,3 @@
         </div>
     </div>
 </div>
-
-

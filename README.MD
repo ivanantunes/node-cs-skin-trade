@@ -5,7 +5,7 @@ Project Created to Manage Sale and Purchase of Skins
 ## TO:DO
 
 - [ ] CRUD
-    - [ ] Account
+    - [X] Account
         - [X] Table Fields
             - [X] id
             - [X] name
@@ -18,9 +18,9 @@ Project Created to Manage Sale and Purchase of Skins
                 - Required
             - [X] datetime_update
                 - Required
-        - [ ] Register Screen
-        - [ ] Update Screen
-        - [ ] List Screen
+        - [X] Register Screen
+        - [X] Update Screen
+        - [X] List Screen
     - [ ] Site
         - [X] Table Fields
             - [X] id

@@ -101,7 +101,7 @@ AccountRouter.get('', Authentication, (request, response) => {
                     }
                 },
                 limit: pageSize,
-                offset: page * pageSize,
+                offset: page,
                 order: [[order.field, order.dir]]
             }));
         }),
@@ -109,7 +109,7 @@ AccountRouter.get('', Authentication, (request, response) => {
             const rows = result.rows.map((row) => row.get({ plain: true }));
             const total = result.count;
 
-            return { draw: query.draw, recordsTotal: total, recordsFiltered: rows.length, data: rows };
+            return { draw: query.draw, recordsTotal: total, recordsFiltered: total, data: rows };
         })
     ).subscribe({
         next: (result) => response.status(200).json(result),

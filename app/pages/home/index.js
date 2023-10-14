@@ -3,7 +3,6 @@ if (!isAuthenticated()) {
 }
 
 $(document).ready(() => {
-    const loading = document.getElementById('loading');
     const session = onGetSession();
 
     changeScreen('/dashboard/');
@@ -54,7 +53,16 @@ function changeScreen(url) {
     $('#screen').load(url, () => { });
 }
 
-function logout() {
-    onEndSession();
-    location.href = '/login';
+/**
+ * Start or Stop Loading
+ * @param {boolean} status 
+ */
+function onLoading(status) {
+    const loading = document.getElementById('loading');
+
+    if (status) {
+        loading.style.display = 'flex';
+    } else {
+        loading.style.display = 'none';
+    }
 }
