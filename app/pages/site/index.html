@@ -1,0 +1,152 @@
+<link href="/site/index.css" rel="stylesheet" />
+<script src="/site/index.js"></script>
+
+<!-- Form Add -->
+<div class="modal fade" id="formAddModal" tabindex="-1" aria-labelledby="formAddModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content background-default">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formAddModalLabel">Register <strong>Site</strong></h5>
+            </div>
+            <div class="modal-body">
+                <form id="formAdd" class="needs-validation" novalidate>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-globe-americas"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Title (Site Name)" required>
+                        <div class="invalid-feedback"><strong>Title</strong> is Required</div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-link-45deg"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="url" name="url" placeholder="Url (Site Url)" required>
+                        <div class="invalid-feedback"><strong>Url</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-percent"></i></span>
+                        <input type="number" onchange="changeHandlerPercent(this)" max="100" min="0" step="any" class="form-control form-control-lg" id="sales_commission_percent" name="sales_commission_percent" placeholder="Sales Commission" required>
+                        <div class="invalid-feedback"><strong>Sales Commission</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-percent"></i></span>
+                        <input type="number" onchange="changeHandlerPercent(this)" max="100" min="0" step="any" class="form-control form-control-lg" id="fee_withdraw_percent" name="fee_withdraw_percent" placeholder="Fee Withdraw" required>
+                        <div class="invalid-feedback"><strong>Fee Withdraw</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-cash-stack"></i></span>
+                        <input type="number" onchange="changeHandlerMoney(this)" min="0" step="any" class="form-control form-control-lg" id="opening_balance" name="opening_balance" placeholder="Opening Balance" required>
+                        <div class="invalid-feedback"><strong>Opening Balance</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-wallet2"></i></span>
+                        <input type="number" onchange="changeHandlerMoney(this)" min="0" step="any" class="form-control form-control-lg" id="balance" name="balance" placeholder="Balance" required>
+                        <div class="invalid-feedback"><strong>Balance</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-person-circle"></i></span>
+                        <input class="form-control form-control-lg" type="text" list="datalistAccount" id="account" name="account" placeholder="Choose Account" required>
+                        <datalist id="datalistAccount"></datalist>
+                        <div class="invalid-feedback"><strong>Account</strong> is Required</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-save-modal">Register</button>
+                    <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Form Edit -->
+<div class="modal fade" id="formEditModal" tabindex="-1" aria-labelledby="formEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content background-default">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formEditModalLabel">Update <strong>Site</strong></h5>
+            </div>
+            <div class="modal-body">
+                <form id="formEdit" class="needs-validation" novalidate>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-globe-americas"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="titleEdit" name="title" placeholder="Title (Site Name)" required>
+                        <div class="invalid-feedback"><strong>Title</strong> is Required</div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-link-45deg"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="urlEdit" name="url" placeholder="Url (Site Url)" required>
+                        <div class="invalid-feedback"><strong>Url</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-percent"></i></span>
+                        <input type="number" onchange="changeHandlerPercent(this)" max="100" min="0" step="any" class="form-control form-control-lg" id="sales_commission_percentEdit" name="sales_commission_percent" placeholder="Sales Commission" required>
+                        <div class="invalid-feedback"><strong>Sales Commission</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-percent"></i></span>
+                        <input type="number" onchange="changeHandlerPercent(this)" max="100" min="0" step="any" class="form-control form-control-lg" id="fee_withdraw_percentEdit" name="fee_withdraw_percent" placeholder="Fee Withdraw" required>
+                        <div class="invalid-feedback"><strong>Fee Withdraw</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-cash-stack"></i></span>
+                        <input type="number" onchange="changeHandlerMoney(this)" min="0" step="any" class="form-control form-control-lg" id="opening_balanceEdit" name="opening_balance" placeholder="Opening Balance" required>
+                        <div class="invalid-feedback"><strong>Opening Balance</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-wallet2"></i></span>
+                        <input type="number" onchange="changeHandlerMoney(this)" min="0" step="any" class="form-control form-control-lg" id="balanceEdit" name="balance" placeholder="Balance" required>
+                        <div class="invalid-feedback"><strong>Balance</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-person-circle"></i></span>
+                        <input class="form-control form-control-lg" type="text" list="datalistAccount" id="accountEdit" name="account" placeholder="Choose Account" required>
+                        <datalist id="datalistAccount"></datalist>
+                        <div class="invalid-feedback"><strong>Account</strong> is Required</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-save-modal">Save Changes</button>
+                    <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="shadow p-3 mb-5 bg-body rounded container-datatable">
+            <div class="container-title-button">
+                <h2>Site</h2>
+                <button type="button" class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#formAddModal">
+                    <i class="bi bi-plus-lg"></i>
+                    New
+                </button>
+            </div>
+
+            <table id="siteTable" class="hover row-border stipe" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Url</th>
+                        <th>Sales Commission</th>
+                        <th>Fee Withdraw</th>
+                        <th>Opening Balance</th>
+                        <th>Balance</th>
+                        <th>Account</th>
+                        <th>Dt. Create</th>
+                        <th>Dt. Update</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>

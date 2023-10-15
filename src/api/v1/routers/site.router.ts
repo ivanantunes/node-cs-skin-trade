@@ -9,37 +9,36 @@ const translate = zTranslateService.getInstance();
 const crud = zCrudService.getInstance();
 const database = zDatabaseService.getInstance();
 
-export const AccountRouter = express.Router();
+export const SiteRouter = express.Router();
 
-AccountRouter.post('', Authentication, (request, response) => {
+SiteRouter.post('', Authentication, (request, response) => {
     const lng = request.headers['content-language'] || zConfigModule.MOD_LANG;
     const body = request.body;
 
-    if (!body.name || !body.url) {
+    if (!body.title || !body.url || body.sales_commission_percent < 0 || body.fee_withdraw_percent < 0 || body.opening_balance < 0 || body.balance < 0 || body.account_id < 0) {
         return exitWith401(response, translate.t('Missing Parameters', { lng }));
     }
 
     const datetime = new Date().toISOString();
 
     const object = {
-        name: body.name,
-        url: body.url,
+        ...body,
         datetime_create: datetime,
         datetime_update: datetime
     };
 
-    crud.create(object, 'account').subscribe({
-        complete: () => exitWith201(response, 'Account Registred Successfully'),
-        error: (error) => exitWith500(response, 'Failed to Register Account', error)
+    crud.create(object, 'site').subscribe({
+        complete: () => exitWith201(response, 'Site Registred Successfully'),
+        error: (error) => exitWith500(response, 'Failed to Register Site', error)
     });
 });
 
-AccountRouter.put('/:id', Authentication, (request, response) => {
+SiteRouter.put('/:id', Authentication, (request, response) => {
     const lng = request.headers['content-language'] || zConfigModule.MOD_LANG;
     const body = request.body;
     const id = request.params.id;
 
-    if (!body.name || !body.url) {
+    if (!body.title || !body.url || body.sales_commission_percent < 0 || body.fee_withdraw_percent < 0 || body.opening_balance < 0 || body.balance < 0 || body.account_id < 0) {
         return exitWith401(response, translate.t('Missing Parameters', { lng }));
     }
 
@@ -48,18 +47,17 @@ AccountRouter.put('/:id', Authentication, (request, response) => {
     }
 
     const object = {
-        name: body.name,
-        url: body.url,
+        ...body,
         datetime_update: new Date().toISOString()
     };
 
-    crud.update(object, Number(id), 'id', 'account').subscribe({
-        complete: () => exitWith200(response, 'Account Updated Successfully'),
-        error: (error) => exitWith500(response, 'Failed to Update Account', error)
+    crud.update(object, Number(id), 'id', 'site').subscribe({
+        complete: () => exitWith200(response, 'Site Updated Successfully'),
+        error: (error) => exitWith500(response, 'Failed to Update Site', error)
     });
 });
 
-AccountRouter.delete('/:id', Authentication, (request, response) => {
+SiteRouter.delete('/:id', Authentication, (request, response) => {
     const lng = request.headers['content-language'] || zConfigModule.MOD_LANG;
     const id = request.params.id;
 
@@ -67,13 +65,13 @@ AccountRouter.delete('/:id', Authentication, (request, response) => {
         return exitWith401(response, translate.t('Invalid Id', { lng }));
     }
 
-    crud.delete(Number(id), 'id', 'account').subscribe({
-        complete: () => exitWith200(response, 'Account Deleted Successfully'),
-        error: (error) => exitWith500(response, 'Failed to Delete Account', error)
+    crud.delete(Number(id), 'id', 'site').subscribe({
+        complete: () => exitWith200(response, 'Site Deleted Successfully'),
+        error: (error) => exitWith500(response, 'Failed to Delete Site', error)
     });
 });
 
-AccountRouter.get('', Authentication, (request, response) => {
+SiteRouter.get('', Authentication, (request, response) => {
     const query = request.query as any;
     const page = query.start ? Number(query.start) : 0;
     const pageSize = Number(query.length) || 10;
@@ -89,14 +87,17 @@ AccountRouter.get('', Authentication, (request, response) => {
 
     database.getConnection().pipe(
         switchMap((con) => {
-            return from(con.model('account').findAndCountAll({
+            return from(con.model('site').findAndCountAll({
                 where: {
                     [Op.or]: {
-                        name: {
+                        title: {
                             [Op.substring]: search
                         }
                     }
                 },
+                include: [
+                    { as: 'account', model: con.model('account'), required: true }
+                ],
                 limit: pageSize,
                 offset: page,
                 order: [[order.field, order.dir]]
@@ -110,37 +111,22 @@ AccountRouter.get('', Authentication, (request, response) => {
         })
     ).subscribe({
         next: (result) => response.status(200).json(result),
-        error: (error) => exitWith500(response, 'Failed to List Account', error)
+        error: (error) => exitWith500(response, 'Failed to List Site', error)
     });
 });
 
-AccountRouter.get('/all', Authentication, (request, response) => {
-    const lng = request.headers['content-language'] || zConfigModule.MOD_LANG;
-
-    database.getConnection().pipe(
-        switchMap((con) => {
-            return from(con.model('account').findAll({
-                attributes: ['id', 'name']
-            }));
-        })
-    ).subscribe({
-        next: (result) => response.status(200).json(result),
-        error: (error) => exitWith500(response, 'Failed to Get Account', error)
-    });
-});
-
-AccountRouter.get('/:id', Authentication, (request, response) => {
+SiteRouter.get('/:id', Authentication, (request, response) => {
     const lng = request.headers['content-language'] || zConfigModule.MOD_LANG;
     const id = request.params.id;
 
     database.getConnection().pipe(
         switchMap((con) => {
-            return from(con.model('account').findOne({
+            return from(con.model('site').findOne({
                 where: { id }
             }));
         })
     ).subscribe({
         next: (result) => response.status(200).json(result),
-        error: (error) => exitWith500(response, 'Failed to Get Account', error)
+        error: (error) => exitWith500(response, 'Failed to Get Site', error)
     });
 });

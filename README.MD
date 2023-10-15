@@ -21,7 +21,7 @@ Project Created to Manage Sale and Purchase of Skins
         - [X] Register Screen
         - [X] Update Screen
         - [X] List Screen
-    - [ ] Site
+    - [X] Site
         - [X] Table Fields
             - [X] id
             - [X] logo
@@ -53,9 +53,9 @@ Project Created to Manage Sale and Purchase of Skins
                 - Required
             - [X] datetime_update
                 - Required
-        - [ ] Register Screen
-        - [ ] Update Screen
-        - [ ] List Screen
+        - [X] Register Screen
+        - [X] Update Screen
+        - [X] List Screen
     - [ ] purchase_and_sales
         - [X] Table Fields
             - [X] id

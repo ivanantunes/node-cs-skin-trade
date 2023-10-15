@@ -1,7 +1,7 @@
 $(document).ready(() => {
-    const table = new DataTable('#accountTable', {
+    const table = new DataTable('#siteTable', {
         ajax: {
-            url: '/api/v1/account',
+            url: '/api/v1/site',
             method: 'GET',
             beforeSend: (xhr) => {
                 xhr.setRequestHeader('Authorization', `Bearer ${onGetSession().token}`);
@@ -11,7 +11,7 @@ $(document).ready(() => {
                     logout();
                 } else {
                     Swal.fire({
-                        title: 'Account List Failed!',
+                        title: 'Site List Failed!',
                         icon: 'error',
                         text: error.responseJSON.message,
                         showConfirmButton: false,
@@ -21,8 +21,29 @@ $(document).ready(() => {
         },
         columns: [
             { data: 'id' },
-            { data: 'name' },
+            { data: 'title' },
             { data: 'url' },
+            { data: 'sales_commission_percent', render: (data, type, full, meta) => `${Number(data).toFixed(2)} %` },
+            { data: 'fee_withdraw_percent', render: (data, type, full, meta) => `${Number(data).toFixed(2)} %` },
+            {
+                data: 'opening_balance',
+                render: (data, type, full, meta) => {
+                    return Number(data).toLocaleString(navigator.language,{style: 'currency', currency: navigator.language === 'pt-BR' ? 'BRL' : 'USD'});
+                }
+            },
+            {
+                data: 'balance',
+                render: (data, type, full, meta) => {
+                    return Number(data).toLocaleString(navigator.language,{style: 'currency', currency: navigator.language === 'pt-BR' ? 'BRL' : 'USD'});
+                }
+            },
+            {
+                data: 'account',
+                orderable: false,
+                render: (data, type, full, meta) => {
+                    return data.name;
+                }
+            },
             {
                 data: 'datetime_create',
                 visible: false,
@@ -52,6 +73,8 @@ $(document).ready(() => {
         responsive: true,
         select: false
     });
+
+    loadingAccountOption();
 
     $("#formAddModal").on("hidden.bs.modal", () => {
         document.getElementById('formAdd').reset();
@@ -89,8 +112,13 @@ $(document).ready(() => {
         });
 
         const data = table.row(e.target.closest('tr')).data();
-        document.getElementById('nameEdit').value = data.name;
+        document.getElementById('titleEdit').value = data.title;
         document.getElementById('urlEdit').value = data.url;
+        document.getElementById('sales_commission_percentEdit').value = data.sales_commission_percent;
+        document.getElementById('fee_withdraw_percentEdit').value = data.fee_withdraw_percent;
+        document.getElementById('opening_balanceEdit').value = data.opening_balance;
+        document.getElementById('balanceEdit').value = data.balance;
+        document.getElementById('accountEdit').value = data.account.name;
     });
 
     table.on('click', 'button.delete', (e) => {
@@ -115,13 +143,18 @@ $(document).ready(() => {
     function onAdd() {
         onLoading(true);
     
-        const name = document.getElementById('name').value;
+        const title = document.getElementById('title').value;
         const url = document.getElementById('url').value;
+        const sales_commission_percent = document.getElementById('sales_commission_percent').value;
+        const fee_withdraw_percent = document.getElementById('fee_withdraw_percent').value;
+        const opening_balance = document.getElementById('opening_balance').value;
+        const balance = document.getElementById('balance').value;
+        const account_id = document.querySelector("#datalistAccount option[value='"+document.getElementById('account').value+"']").dataset.value;
     
         $.ajax({
-            url: '/api/v1/account',
+            url: '/api/v1/site',
             type: 'POST',
-            data: JSON.stringify({ name, url }),
+            data: JSON.stringify({ title, url, sales_commission_percent, fee_withdraw_percent, opening_balance, balance, account_id }),
             contentType: 'application/json; charset=utf-8',
             beforeSend: (xhr) => {
                 xhr.setRequestHeader('Authorization', `Bearer ${onGetSession().token}`);
@@ -129,6 +162,7 @@ $(document).ready(() => {
             traditional: true
         }).done((response) => {
             onLoading(false);
+            document.getElementById('formAdd').reset();
             bootstrap.Modal.getInstance(document.getElementById('formAddModal')).hide();
             Swal.fire({
                 title: 'Successfully!',
@@ -141,7 +175,7 @@ $(document).ready(() => {
         }).fail((error, textStatus) => {
             onLoading(false);
             Swal.fire({
-                title: 'Register Account Failed!',
+                title: 'Register Site Failed!',
                 icon: 'error',
                 text: error.responseJSON.message,
                 showConfirmButton: false,
@@ -150,17 +184,22 @@ $(document).ready(() => {
     
         });
     }
-    
+
     function onEdit(id) {
         onLoading(true);
     
-        const name = document.getElementById('nameEdit').value;
+        const title = document.getElementById('titleEdit').value;
         const url = document.getElementById('urlEdit').value;
-    
+        const sales_commission_percent = document.getElementById('sales_commission_percentEdit').value;
+        const fee_withdraw_percent = document.getElementById('fee_withdraw_percentEdit').value;
+        const opening_balance = document.getElementById('opening_balanceEdit').value;
+        const balance = document.getElementById('balanceEdit').value;
+        const account_id = document.querySelector("#datalistAccount option[value='"+document.getElementById('accountEdit').value+"']").dataset.value;
+
         $.ajax({
-            url: `/api/v1/account/${id}`,
+            url: `/api/v1/site/${id}`,
             type: 'PUT',
-            data: JSON.stringify({ name, url }),
+            data: JSON.stringify({ title, url, sales_commission_percent, fee_withdraw_percent, opening_balance, balance, account_id }),
             contentType: 'application/json; charset=utf-8',
             beforeSend: (xhr) => {
                 xhr.setRequestHeader('Authorization', `Bearer ${onGetSession().token}`);
@@ -181,7 +220,7 @@ $(document).ready(() => {
         }).fail((error, textStatus) => {
             onLoading(false);
             Swal.fire({
-                title: 'Update Account Failed!',
+                title: 'Update Site Failed!',
                 icon: 'error',
                 text: error.responseJSON.message,
                 showConfirmButton: false,
@@ -190,12 +229,12 @@ $(document).ready(() => {
     
         });
     }
-    
+
     function onDelete(id) {
         onLoading(true);
     
         $.ajax({
-            url: `/api/v1/account/${id}`,
+            url: `/api/v1/site/${id}`,
             type: 'DELETE',
             beforeSend: (xhr) => {
                 xhr.setRequestHeader('Authorization', `Bearer ${onGetSession().token}`);
@@ -214,7 +253,7 @@ $(document).ready(() => {
         }).fail((error, textStatus) => {
             onLoading(false);
             Swal.fire({
-                title: 'Delete Account Failed!',
+                title: 'Delete Site Failed!',
                 icon: 'error',
                 text: error.responseJSON.message,
                 showConfirmButton: false,
@@ -224,3 +263,56 @@ $(document).ready(() => {
         });
     }
 });
+
+function changeHandlerPercent(val) {
+    if (Number(val.value) > 100) {
+        val.value = 100
+    }
+
+    if (Number(val.value) < 0) {
+        val.value = 0;
+    }
+}
+
+function changeHandlerMoney(val) {
+    if (Number(val.value) < 0) {
+        val.value = 0;
+    }
+}
+
+function loadingAccountOption() {
+    onLoading(true);
+    $.ajax({
+        url: '/api/v1/account/all',
+        method: 'GET',
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader('Authorization', `Bearer ${onGetSession().token}`);
+        },
+        success: (result) => {
+            const dataList = document.getElementById('datalistAccount');
+
+            result.forEach((row) => {
+                const option = document.createElement('option');
+                option.value = row.name;
+                option.setAttribute('data-value', row.id);
+
+                dataList.appendChild(option);
+            });
+            onLoading(false);
+        },
+        error: (error) => {
+            onLoading(false);
+
+            if (error.responseJSON.value.isAuth === false) {
+                logout();
+            } else {
+                Swal.fire({
+                    title: 'Account List Failed!',
+                    icon: 'error',
+                    text: error.responseJSON.message,
+                    showConfirmButton: false,
+                });
+            }
+        }
+    });
+}
