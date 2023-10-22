@@ -22,4 +22,3 @@ zDatabaseController.getInstance().createTables(tables).pipe(
     complete: () => zLoggerUtil.info({}, 'Application is Running'),
     error: (error) => zLoggerUtil.error(error, 'Failed Start Application'),
 });
-

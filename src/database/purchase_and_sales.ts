@@ -27,6 +27,13 @@ export const purchase_and_sales: zITableDB = {
             fieldSize: 255
         },
         {
+            fieldName: 'item_weapon',
+            fieldPrimaryKey: false,
+            fieldRequired: true,
+            fieldType: zEFieldTypeDB.VARCHAR,
+            fieldSize: 255
+        },
+        {
             fieldName: 'item_exterior',
             fieldPrimaryKey: false,
             fieldRequired: false,
@@ -42,7 +49,7 @@ export const purchase_and_sales: zITableDB = {
             fieldType: zEFieldTypeDB.ENUM,
             fieldAllowNull: true,
             fieldDefaultValue: null,
-            fieldEnumValue: ['CG', 'IG', 'MSH', 'RE', 'CL', 'CO']
+            fieldEnumValue: ['CG', 'IG', 'MSG', 'RE', 'CL', 'CO']
         },
         {
             fieldName: 'item_type',

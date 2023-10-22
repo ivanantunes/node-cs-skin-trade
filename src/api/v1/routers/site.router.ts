@@ -115,6 +115,20 @@ SiteRouter.get('', Authentication, (request, response) => {
     });
 });
 
+
+SiteRouter.get('/all', Authentication, (request, response) => {
+    database.getConnection().pipe(
+        switchMap((con) => {
+            return from(con.model('site').findAll({
+                attributes: ['id', 'title']
+            }));
+        }),
+    ).subscribe({
+        next: (result) => response.status(200).json(result),
+        error: (error) => exitWith500(response, 'Failed to List Site', error)
+    });
+});
+
 SiteRouter.get('/:id', Authentication, (request, response) => {
     const lng = request.headers['content-language'] || zConfigModule.MOD_LANG;
     const id = request.params.id;
@@ -122,7 +136,10 @@ SiteRouter.get('/:id', Authentication, (request, response) => {
     database.getConnection().pipe(
         switchMap((con) => {
             return from(con.model('site').findOne({
-                where: { id }
+                where: { id },
+                include: [
+                    { as: 'account', model: con.model('account'), required: true }
+                ],
             }));
         })
     ).subscribe({

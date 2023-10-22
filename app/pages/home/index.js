@@ -5,7 +5,7 @@ if (!isAuthenticated()) {
 $(document).ready(() => {
     const session = onGetSession();
 
-    changeScreen('/dashboard/');
+    changeScreen('/purchases_and_sales/');
     $('#profilePhoto').attr('src', `/web/assets/images/agents/${Math.floor(Math.random() * 5) + 1}.png`);
     $('#profileName').html(session.username);
     $('#profileEmail').html(session.email);

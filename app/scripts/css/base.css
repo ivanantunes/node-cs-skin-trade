@@ -6,6 +6,11 @@
     margin: 0;
 }
 
+*:focus {
+    border-color: var(--primary);
+    box-shadow: none !important;
+}
+
 body {
     background-color: rgba(37, 9, 59, 0.8);
 }
@@ -103,6 +108,7 @@ input[type="color"]:focus,
 }
 
 textarea,
+select,
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -118,7 +124,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-    border-color: var(--primary);
+    border-color: var(--primary) !important;
 }
 
 .modal-header {
