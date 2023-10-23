@@ -77,12 +77,16 @@ PurchaseAndSalesRouter.post('', Authentication, (request, response) => {
                                             return from(con.model('site').increment(
                                                 { balance: Number(object.purchase_price) * -1 },
                                                 { where: { id: site.id }, transaction }
-                                            ));
+                                            )).pipe(
+                                                switchMap(() => crud.update({ datetime_update: new Date().toISOString() }, site.id, 'id', 'site', transaction))
+                                            );
                                         } else if (object.status === 'for_sale') {
                                             return from(con.model('site').increment(
-                                                { balance: +Number(object.purchase_price) },
+                                                { balance: +Number(object.balance_deducting_sales_commission) },
                                                 { where: { id: site.id }, transaction }
-                                            ));
+                                            )).pipe(
+                                                switchMap(() => crud.update({ datetime_update: new Date().toISOString() }, site.id, 'id', 'site', transaction))
+                                            );
                                         }
 
                                         return of(-1);
@@ -126,7 +130,7 @@ PurchaseAndSalesRouter.put('/:id', Authentication, (request, response) => {
     database.getConnection().pipe(
         switchMap((con) => from(con.transaction({ autocommit: false })).pipe(
             switchMap((transaction) => {
-                return crud.findAll(purchase_and_sales, { id: body.site_id }).pipe(
+                return crud.findAll(site, { id: body.site_id }).pipe(
                     switchMap((sites) => {
                         if (sites.length === 0) {
                             return throwError(() => 'Site Not Found by Id');
@@ -171,12 +175,16 @@ PurchaseAndSalesRouter.put('/:id', Authentication, (request, response) => {
                                             return from(con.model('site').increment(
                                                 { balance: Number(object.purchase_price) * -1 },
                                                 { where: { id: site.id }, transaction }
-                                            ));
+                                            )).pipe(
+                                                switchMap(() => crud.update({ datetime_update: new Date().toISOString() }, site.id, 'id', 'site', transaction))
+                                            );
                                         } else if (object.status === 'for_sale') {
                                             return from(con.model('site').increment(
-                                                { balance: +Number(object.purchase_price) },
+                                                { balance: +Number(object.balance_deducting_sales_commission) },
                                                 { where: { id: site.id }, transaction }
-                                            ));
+                                            )).pipe(
+                                                switchMap(() => crud.update({ datetime_update: new Date().toISOString() }, site.id, 'id', 'site', transaction))
+                                            );
                                         }
 
                                         return of(-1);
@@ -207,7 +215,40 @@ PurchaseAndSalesRouter.delete('/:id', Authentication, (request, response) => {
         return exitWith401(response, translate.t('Invalid Id', { lng }));
     }
 
-    crud.delete(Number(id), 'id', 'purchase_and_sales').subscribe({
+    database.getConnection().pipe(
+        switchMap((con) => from(con.transaction({ autocommit: false })).pipe(
+            switchMap((transaction) => {
+                return from(con.model('purchase_and_sales').findOne({
+                    where: { id },
+                    include: [
+                        { as: 'site', model: con.model('site'), required: true }
+                    ],
+                    transaction
+                })).pipe(
+                    switchMap((rawItem) => {
+                        if (!rawItem) {
+                            return throwError(() => 'Item Not Found');
+                        }
+
+                        const item = rawItem.get({ plain: true });
+
+                        return from(con.model('site').increment(
+                            { balance: item.status === 'for_sale' ? Number(item.profit) * -1 : +Number(item.purchase_price) },
+                            { where: { id: item.site_id }, transaction }
+                        )).pipe(
+                            switchMap(() => crud.update({ datetime_update: new Date().toISOString() }, item.site_id, 'id', 'site', transaction))
+                        );
+                    }),
+                    switchMap(() => crud.delete(Number(id), 'id', 'purchase_and_sales', false, transaction)),
+                    tap(() => transaction.commit()),
+                    catchError((error) => {
+                        transaction.rollback();
+                        return throwError(() => error);
+                    })
+                );
+            })
+        ))
+    ).subscribe({
         complete: () => exitWith200(response, 'Item Deleted Successfully'),
         error: (error) => exitWith500(response, 'Failed to Delete Item', error)
     });

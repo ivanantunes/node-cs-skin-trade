@@ -149,6 +149,154 @@
     </div>
 </div>
 
+<!-- Form Edit -->
+<div class="modal fade" id="formEditModal" tabindex="-1" aria-labelledby="formEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+        <div class="modal-content background-default">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formEditModalLabel">Update <strong>Purchase / Sales</strong></h5>
+            </div>
+            <div class="modal-body">
+                <form id="formEdit" class="needs-validation" novalidate>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-highlighter"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="item_nameEdit" name="item_name" placeholder="Item Name" required>
+                        <div class="invalid-feedback"><strong>Item Name</strong> is Required</div>
+
+                        <span class="input-group-text container-input-icon"><i class="bi bi-hand-index-fill"></i></span>
+                        <input type="text" class="form-control form-control-lg" id="item_weaponEdit" name="item_weapon" placeholder="Item Weapon" required>
+                        <div class="invalid-feedback"><strong>Item Weapon</strong> is Required</div>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-info-circle-fill"></i></span>
+                        <select class="form-select form-select-lg" id="item_exteriorEdit" name="item_exterior">
+                            <option selected disabled value="">Select Item Exterior</option>
+                            <option value="FN">Factory New</option>
+                            <option value="MW">Minimal Wear</option>
+                            <option value="FT">Field-Tested</option>
+                            <option value="WW">Well-Worm</option>
+                            <option value="BS">Battle-Scarred</option>
+                        </select>
+
+                        <span class="input-group-text container-input-icon"><i class="bi bi-gem"></i></span>
+                        <select class="form-select form-select-lg" id="item_rarityEdit" name="item_rarity">
+                            <option selected disabled value="">Select Item Rarity</option>
+                            <option value="CG">Consumer Grade</option>
+                            <option value="IG">Industrial Grade</option>
+                            <option value="MSG">Mil-Spec Grade</option>
+                            <option value="RE">Restricted</option>
+                            <option value="CL">Classified</option>
+                            <option value="CO">Covert</option>
+                        </select>
+
+                        <span class="input-group-text container-input-icon"><i class="bi bi-hash"></i></span>
+                        <select class="form-select form-select-lg" id="item_typeEdit" name="item_type">
+                            <option selected disabled value="">Select Item Type</option>
+                            <option value="Knives">Knives</option>
+                            <option value="Gloves">Gloves</option>
+                            <option value="Pistols">Pistols</option>
+                            <option value="SMGs">SMGs</option>
+                            <option value="Assult Rifles">Assult Rifles</option>
+                            <option value="Sniper Rifles">Sniper Rifles</option>
+                            <option value="Shotguns">Shotguns</option>
+                            <option value="Machine Guns">Machine Guns</option>
+                            <option value="Keys">Keys</option>
+                            <option value="Sticker">Sticker</option>
+                            <option value="Case">Case</option>
+                            <option value="Grffiti">Grffiti</option>
+                            <option value="Music Kit">Music Kit</option>
+                            <option value="Pin">Pin</option>
+                            <option value="Agents">Agents</option>
+                            <option value="Patch">Patch</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-123"></i></span>
+                        <input type="number" class="form-control form-control-lg" onchange="changeHandlerMoney(this)" min="0" step="any" id="item_floatEdit" name="item_float" placeholder="Item Float">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-question-circle-fill"></i></span>
+                        <select class="form-select form-select-lg" id="item_is_stattrakEdit" name="item_is_stattrak" required>
+                            <option selected disabled value="">Item is Stattrak</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                        <div class="invalid-feedback"><strong>Item is Stattrak</strong> is Required</div>
+
+                        <span class="input-group-text container-input-icon"><i class="bi bi-question-circle-fill"></i></span>
+                        <select class="form-select form-select-lg" id="item_has_stickerEdit" name="item_has_sticker" required>
+                            <option selected disabled value="">Item has Sticker</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                        <div class="invalid-feedback"><strong>Item has Sticker</strong> is Required</div>
+
+                        <span class="input-group-text container-input-icon"><i class="bi bi-question-circle-fill"></i></span>
+                        <select class="form-select form-select-lg" id="item_is_souvenirEdit" name="item_is_souvenir" required>
+                            <option selected disabled value="">Item is Souvenir</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                        <div class="invalid-feedback"><strong>Item is Souvenir</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-cash-coin"></i></span>
+                        <input type="number" onchange="changeHandlerMoney(this)" min="0" step="any" class="form-control form-control-lg" id="item_price_on_steamEdit" name="item_price_on_steam" placeholder="Price (Steam)" required>
+                        <div class="invalid-feedback"><strong>Price (Steam)</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-cash-stack"></i></span>
+                        <input type="number" onchange="changeHandlerMoney(this)" min="0" step="any" class="form-control form-control-lg" id="purchase_priceEdit" name="purchase_price" placeholder="Purchase Price" required>
+                        <div class="invalid-feedback"><strong>Purchase Price</strong> is Required</div>
+
+                        <span class="input-group-text container-input-icon"><i class="bi bi-percent"></i></span>
+                        <input type="number" onchange="changeHandlerPercent(this)" max="100" min="0" step="any" class="form-control form-control-lg" id="percent_discount_on_purchaseEdit" name="percent_discount_on_purchase" placeholder="Purchase Discount" required>
+                        <div class="invalid-feedback"><strong>Purchase Discount</strong> is Required</div>
+                    </div>
+
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-cash-stack"></i></span>
+                        <input type="number" onchange="changeHandlerPercent(this)" max="100" min="0" step="any" class="form-control form-control-lg" id="sale_valueEdit" name="sale_value" placeholder="Sale Value" required>
+                        <div class="invalid-feedback"><strong>Sale Value</strong> is Required</div>
+
+                        <span class="input-group-text container-input-icon"><i class="bi bi-percent"></i></span>
+                        <input type="number" onchange="changeHandlerPercent(this)" max="100" min="0" step="any" class="form-control form-control-lg" id="percent_discount_on_saleEdit" name="percent_discount_on_sale" placeholder="Sale Discount" required>
+                        <div class="invalid-feedback"><strong>Sale Discount</strong> is Required</div>
+
+                        <span class="input-group-text container-input-icon"><i class="bi bi-clock-history"></i></span>
+                        <select class="form-select form-select-lg" id="statusEdit" name="status" required>
+                            <option selected disabled value="">Choose Status</option>
+                            <option value="purchase">Purchase</option>
+                            <option value="sold">Sold</option>
+                            <option value="steam_inventory">Steam Inventory</option>
+                            <option value="site_inventory">Site Inventory</option>
+                            <option value="for_sale">For Sale</option>
+                        </select>
+                        <div class="invalid-feedback"><strong>Status</strong> is Required</div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text container-input-icon"><i class="bi bi-globe-americas"></i></span>
+                        <input class="form-control form-control-lg" type="text" list="datalistSite" id="siteEdit" name="site" placeholder="Choose Site" required>
+                        <datalist id="datalistSite"></datalist>
+                        <div class="invalid-feedback"><strong>Site</strong> is Required</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-save-modal">Save Changes</button>
+                    <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="shadow p-3 mb-5 bg-body rounded container-datatable">
