@@ -1,6 +1,6 @@
 {
   "name": "cs-skin-trade",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Project Created to Manage Sale and Purchase of Skins",
   "bin": "dist/server.js",
   "main": "dist/server.js",
