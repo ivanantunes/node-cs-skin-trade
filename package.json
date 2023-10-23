@@ -2,11 +2,11 @@
   "name": "cs-skin-trade",
   "version": "0.0.0",
   "description": "Project Created to Manage Sale and Purchase of Skins",
-  "bin": "lib/server.js",
-  "main": "lib/server.js",
-  "types": "lib/server.d.ts",
+  "bin": "dist/server.js",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
   "scripts": {
-    "build": "rm -rf lib/ && tsc",
+    "build": "rm -rf dist/ && tsc && cp -rp app dist/",
     "start": "ts-node src/server.ts",
     "test": "jest"
   },
