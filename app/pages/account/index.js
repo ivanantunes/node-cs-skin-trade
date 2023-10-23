@@ -1,3 +1,5 @@
+isHome();
+
 $(document).ready(() => {
     const table = new DataTable('#accountTable', {
         ajax: {

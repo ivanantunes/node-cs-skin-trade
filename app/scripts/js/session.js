@@ -42,3 +42,12 @@ function logout() {
     onEndSession();
     location.href = '/login';
 }
+
+/**
+ * Check Pathname is Different to Home
+ */
+function isHome() {
+    if (location.pathname !== '/home/') {
+        location.href = '/home/';
+    }
+}
