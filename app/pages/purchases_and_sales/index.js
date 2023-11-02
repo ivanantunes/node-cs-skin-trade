@@ -116,7 +116,6 @@ function toBoolFormat(bool) {
     return bool ? 'Yes' : 'No';
 }
 
-
 $(document).ready(() => {
     const table = new DataTable('#tableCrud', {
         ajax: {
@@ -249,7 +248,6 @@ $(document).ready(() => {
                 event.stopPropagation();
     
                 if (form.checkValidity()) {
-                    console.log('save edi')
                     onEdit(data.id);
                 }
     
@@ -475,4 +473,3 @@ $(document).ready(() => {
         });
     }
 });
-
